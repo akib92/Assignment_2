@@ -449,14 +449,33 @@ namespace DIS_Assignment_2_Fall_2021
         {
             try
             {
-                //write your code here.
-                int[] ans = { };
+                if (nums1 == null || nums2 == null || nums1.Length != nums2.Length)
+                    return null;
+
+                Dictionary<int, int> BValues = new Dictionary<int, int>();
+
+                for (int i = 0; i < nums1.Length; i++)
+                    AddOrUpdate(BValues, nums2[i], i);
+
+                int[] ans = new int[nums1.Length];
+
+                for (int i = 0; i < nums1.Length; i++)
+                    ans[i] = BValues[nums1[i]];
+
                 return ans;
             }
             catch (Exception)
             {
                 throw;
             }
+        }
+
+        private static void AddOrUpdate(Dictionary<int, int> dictionary, int key, int val)
+        {
+            if (dictionary.ContainsKey(key))
+                dictionary[key] = val;
+            else
+                dictionary.Add(key, val);
         }
         /*
         

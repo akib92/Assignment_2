@@ -7,22 +7,23 @@ namespace Assignment_2
 {
     public class Solution
     {
-        public int[] AnagramMappings(int[] A, int[] B)
+        public int[] AnagramMappings(int[] nums1, int[] nums2)
         {
-            if (A == null || B == null || A.Length != B.Length)
+
+            if (nums1 == null || nums2 == null || nums1.Length != nums2.Length)
                 return null;
 
             Dictionary<int, int> BValues = new Dictionary<int, int>();
 
-            for (int i = 0; i < A.Length; i++)
-                AddOrUpdate(BValues, B[i], i);
+            for (int i = 0; i < nums1.Length; i++)
+                AddOrUpdate(BValues, nums2[i], i);
 
-            int[] anagramMapping = new int[A.Length];
+            int[] ans = new int[nums1.Length];
 
-            for (int i = 0; i < A.Length; i++)
-                anagramMapping[i] = BValues[A[i]];
+            for (int i = 0; i < nums1.Length; i++)
+                ans[i] = BValues[nums1[i]];
 
-            return anagramMapping;
+            return ans;
         }
 
         private void AddOrUpdate(Dictionary<int, int> dictionary, int key, int val)
