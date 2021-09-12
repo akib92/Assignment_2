@@ -392,7 +392,7 @@ namespace DIS_Assignment_2_Fall_2021
                         r -= 1;
                 }
                 // return the two values
-               // return new int[2] { l + 1, r + 1 };
+               Console.WriteLine(l + 1+" "+r + 1 );
 
             }
             catch (Exception)
