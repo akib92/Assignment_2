@@ -125,7 +125,7 @@ namespace DIS_Assignment_2_Fall_2021
                 int max = gain[0] > 0 ? gain[0] : 0;
                 int pt = gain[0];
 
-                // iterate thru remaining points to find the max value
+                // Iterate thru remaining points to find the max value
                 for (int i = 1; i < gain.Length; i++)
                 {
                     pt = gain[i] + pt;
@@ -133,6 +133,7 @@ namespace DIS_Assignment_2_Fall_2021
                     if (pt > max)
                         max = pt;
                 }
+                // Return max value
                 return max;
             }
             catch (Exception)
@@ -141,6 +142,8 @@ namespace DIS_Assignment_2_Fall_2021
                 throw;
             }
         }
+
+        // Learned about how to find max value of an element in an array
 
         /*
         
@@ -167,7 +170,7 @@ namespace DIS_Assignment_2_Fall_2021
 
                 int l = 0, p = 0, r = nums.Length - 1;
 
-                // Looking for the target value or placing it in targetted index
+                // Looking for the target value  through the list or placing it in order and return target index
                 while (l <= r)
                 {
                     p = (l + r) / 2;
@@ -188,6 +191,8 @@ namespace DIS_Assignment_2_Fall_2021
                 throw;
             }
         }
+
+        //Learned how to match a value with existing value in an array
 
         /*
          
@@ -214,7 +219,7 @@ namespace DIS_Assignment_2_Fall_2021
                 foreach (var ch in words[0])
                     ansMap[ch - 'a']++;
 
-                // iterate thru remaining strings
+                // Iterate thru remaining strings
                 for (int i = 1; i < words.Length; i++)
                 {
                     // Create the charCount for each string
@@ -241,6 +246,8 @@ namespace DIS_Assignment_2_Fall_2021
             }
         }
 
+        //Learned how to compare strings in an array
+
         /*
         Question 4:
         Given an array of integers arr, write a function that returns true if and only if the number of occurrences of each value in the array is unique.
@@ -266,7 +273,7 @@ namespace DIS_Assignment_2_Fall_2021
                     countDictionary[item] = (!(countDictionary.ContainsKey(item))) ? 1 : countDictionary[item] + 1;
                 }
 
-                // Create Set of the values and return fale when collision occurs 
+                // Create Set of the values and return false when collision occurs 
                 var valSet = new HashSet<int>();
                 foreach (var item in countDictionary.Keys)
                 {
@@ -285,6 +292,8 @@ namespace DIS_Assignment_2_Fall_2021
             }
 
         }
+
+        //Learned how to find/sort repition of a character in an array
 
         /*
         
@@ -312,7 +321,7 @@ namespace DIS_Assignment_2_Fall_2021
             {
                 // Initialize a value
                 int match = 0;
-                // iterate thru the items in the array list and match value
+                // Iterate thru the items in the array list and match value using ruleKey
                 foreach (var list in items)
                 {
                     for (int i = 0; i < list.Count; i += 3)
@@ -331,6 +340,7 @@ namespace DIS_Assignment_2_Fall_2021
                         }
                     }
                 }
+                // return match number if match item and value
                 return match;
             }
             catch (Exception)
@@ -339,6 +349,8 @@ namespace DIS_Assignment_2_Fall_2021
                 throw;
             }
         }
+
+        //matching elements in an array using datatype
 
         /*
         
@@ -369,7 +381,9 @@ namespace DIS_Assignment_2_Fall_2021
                 int l = 0, r = nums.Length - 1, sum;
                 while (true)
                 {
+                    // Iterate thru the items in the array and calculate sum.
                     sum = nums[l] + nums[r];
+                    // See if sum is equal to target
                     if (sum == target)
                         break;
                     else if (sum < target)
@@ -377,7 +391,8 @@ namespace DIS_Assignment_2_Fall_2021
                     else
                         r -= 1;
                 }
-                //return new int[2] { l + 1, r + 1 };
+                // return the two values
+               // return new int[2] { l + 1, r + 1 };
 
             }
             catch (Exception)
@@ -386,6 +401,8 @@ namespace DIS_Assignment_2_Fall_2021
                 throw;
             }
         }
+
+        //how to summ elements in an existing array to find a target sum
 
         /*
          
@@ -411,7 +428,7 @@ namespace DIS_Assignment_2_Fall_2021
                 // Initialize a counter/value
                 int count = 0;
 
-                // iterate thru the string and looks for only matched words
+                // Iterate thru the string and looks for only matched words
                 for (int i = 0; i < words.Length; i++)
                 {
                     foreach (var word in words[i])
@@ -423,7 +440,7 @@ namespace DIS_Assignment_2_Fall_2021
                         }
                     }
                 }
-
+                // Return the number of words
                 return words.Length - count;
             }
             catch (Exception)
@@ -432,6 +449,8 @@ namespace DIS_Assignment_2_Fall_2021
                 throw;
             }
         }
+
+        //how to sort string in an array based on their characters
 
         /*
         Question 8:
@@ -449,11 +468,14 @@ namespace DIS_Assignment_2_Fall_2021
         {
             try
             {
+                //Converting the array into Dictionary and looks for matches 
+
                 if (nums1 == null || nums2 == null || nums1.Length != nums2.Length)
                     return null;
 
                 Dictionary<int, int> BValues = new Dictionary<int, int>();
 
+                //Iterate through the value and get the index number
                 for (int i = 0; i < nums1.Length; i++)
                     AddOrUpdate(BValues, nums2[i], i);
 
@@ -461,7 +483,7 @@ namespace DIS_Assignment_2_Fall_2021
 
                 for (int i = 0; i < nums1.Length; i++)
                     ans[i] = BValues[nums1[i]];
-
+                //Return index number
                 return ans;
             }
             catch (Exception)
@@ -477,6 +499,9 @@ namespace DIS_Assignment_2_Fall_2021
             else
                 dictionary.Add(key, val);
         }
+
+        // mapping two similar arrays with their elements
+
         /*
         
         Question 9:
@@ -498,7 +523,7 @@ namespace DIS_Assignment_2_Fall_2021
             {
                 int sum = 0;
                 int maxSum = int.MinValue;
-
+                //Iterate through the value in the array and calculate max sum
                 for (int i = 0; i < arr.Length; i++)
                 {
                     sum += arr[i];
@@ -514,6 +539,8 @@ namespace DIS_Assignment_2_Fall_2021
                 throw;
             }
         }
+
+        // Add elements in the array to get the max sum by using each elements once
 
         /*
          
@@ -535,8 +562,10 @@ namespace DIS_Assignment_2_Fall_2021
             try
             {
                 int start = 0, sum = 0, minWin = int.MaxValue;
+                // Iterate through the array 
                 for (int end = 0; end < arr10.Length; end++)
                 {
+                    // sum the elements in the array to look for the target sum by taking minimum elements
                     sum += arr10[end];
                     if (sum >= target_subarray_sum)
                     {
@@ -556,3 +585,5 @@ namespace DIS_Assignment_2_Fall_2021
         }
     }
 }
+
+// Find the target sum by using the least possible combination in an array
