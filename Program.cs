@@ -17,7 +17,7 @@ namespace DIS_Assignment_2_Fall_2021
 
             //Question 2:
             Console.WriteLine("Question 2:");
-            int[] nums = { 0, 1, 0, 3, 12 };
+            int[] nums = { 0, 1, 3, 6, 12 };
             Console.WriteLine("Enter the target number:");
             int target = Int32.Parse(Console.ReadLine());
             int pos = SearchInsert(nums, target);
@@ -166,25 +166,24 @@ namespace DIS_Assignment_2_Fall_2021
         {
             try
             {
-                // Initialize the counter through the list of array
-
-                int l = 0, p = 0, r = nums.Length - 1;
-
-                // Looking for the target value  through the list or placing it in order and return target index
-                while (l <= r)
+                //inintialize the counter
+                int i = 0, j = nums.Length - 1;
+                // Perform Binary search
+                while (i <= j)
                 {
-                    p = (l + r) / 2;
-
-                    if (nums[p] == target)
-                        return p;
-
-                    if (nums[p] > target)
-                        r = p - 1;
+                    int mid = i + (j - i) / 2;
+                    if (target == nums[mid])
+                    {
+                        return mid;
+                    }
+                    else if (target > nums[mid])
+                    {
+                        i = mid + 1;
+                    }
                     else
-                        l = p + 1;
+                    { j = mid - 1; }
                 }
-
-                return l;
+                return i;
             }
             catch (Exception)
             {
@@ -424,24 +423,25 @@ namespace DIS_Assignment_2_Fall_2021
         public static int CountConsistentStrings(string allowed, string[] words)
         {
             try
+            // Time O(n*l) || Space O(1), n = len of 'words' arr & l = avg length of each word
             {
-                // Initialize a counter/value
-                int count = 0;
+                bool[] charSet = new bool[26];
+                for (int i = 0; i < allowed.Length; i++)
+                    charSet[allowed[i] - 'a'] = true;
 
-                // Iterate thru the string and looks for only matched words
+                int count = 0;
                 for (int i = 0; i < words.Length; i++)
+                    if (Consistent(words[i]))
+                        count++;
+                return count;
+                // local func
+                bool Consistent(string w)
                 {
-                    foreach (var word in words[i])
-                    {
-                        if (!allowed.Contains(word))
-                        {
-                            count++;
-                            break;
-                        }
-                    }
+                    foreach (var ch in w)
+                        if (!charSet[ch - 'a'])
+                            return false;
+                    return true;
                 }
-                // Return the number of words
-                return words.Length - count;
             }
             catch (Exception)
             {
