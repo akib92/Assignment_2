@@ -17,7 +17,7 @@ namespace DIS_Assignment_2_Fall_2021
 
             //Question 2:
             Console.WriteLine("Question 2:");
-            int[] nums = { 0, 1, 3, 6, 12 };
+            int[] nums = { 0, 1, 0, 3, 12 };
             Console.WriteLine("Enter the target number:");
             int target = Int32.Parse(Console.ReadLine());
             int pos = SearchInsert(nums, target);
